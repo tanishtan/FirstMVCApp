@@ -1,0 +1,30 @@
+﻿@model FirstMVCApp.Models.Customer
+
+@{
+    ViewData["Title"] = "Update Customers";
+}
+
+
+<div class="container">
+    @* Tag Helper - a new tag that is supported from ASP.NET 3.1 onwards *@
+    <partial name="CustomerHeader.cshtml" />
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="card shadow m-auto mt-5">
+                <div class="card-header bg-warning bg-gradient d-flex">
+                    <div class="flex-grow-1">
+                        <h2 class="text-dark text-center">Update Customer</h2>
+                    </div>
+                    <div>
+                        <a href="/customers/addnew" class="btn btn-outline-primary">Add New</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <partial name="CustomerInputPartialView.cshtml" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

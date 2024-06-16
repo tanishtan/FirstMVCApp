@@ -1,0 +1,47 @@
+﻿@model FirstMVCApp.Models.Customer
+
+@{
+    ViewData["Title"] = "Remove Customer";
+}
+
+<div class="container">
+    @* Tag Helper - a new tag that is supported from ASP.NET 3.1 onwards *@
+    <partial name="CustomerHeader.cshtml" />
+
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="card shadow m-auto mt-5">
+                <div class="card-header bg-warning bg-gradient d-flex">
+                    <div class="flex-grow-1">
+                        <h2 class="text-dark text-center">Remove Customer</h2>
+                    </div>
+                    <div>
+                        <a href="/customers/addnew" class="btn btn-outline-primary">Add New</a>
+                    </div>
+                </div>
+                <div class="card-body border border-danger">
+                    <div class="mt-3 text-center">
+                        <dl>
+                            <dt>Company Name</dt>
+                            <dd>@Model.CompanyName</dd>
+                            <dt>Contact Name</dt>
+                            <dd>@Model.ContactName</dd>
+                            <dt>City</dt>
+                            <dd>@Model.City</dd>
+                            <dt>Country</dt>
+                            <dd>@Model.Country</dd>
+                        </dl>
+                        <form asp-action="Remove">
+                            <p class="lead">Are you sure you want delete this item?</p>
+                            <input type="hidden" asp-for="@Model.CustomerId" />
+                            <div class="text-center">
+                                <input type="submit" value="Yes" class="btn btn-sm btn-danger" />
+                                <a href="/customers/list" class="btn btn-sm btn-secondary">No</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

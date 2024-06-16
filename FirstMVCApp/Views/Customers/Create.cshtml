@@ -1,0 +1,32 @@
+﻿@model FirstMVCApp.Models.Customer
+
+@{
+    ViewData["Title"] = "Create a new customer";
+}
+
+<div class="container">
+    @* Tag Helper - a new tag that is supported from ASP.NET 3.1 onwards *@
+    <partial name="CustomerHeader.cshtml" />
+    <div class="row">
+        <div class="col-10 offset-1">
+            <div class="card shadow m-auto mt-5">
+                <div class="card-header bg-warning bg-gradient d-flex">
+                    <div class="flex-grow-1">
+                        <h2 class="text-dark text-center">Add New Product</h2>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <partial name="CustomerInputPartialView.cshtml" /> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

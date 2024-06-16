@@ -1,0 +1,47 @@
+﻿@model FirstMVCApp.Models.Product
+
+
+@{
+    //string message = "Hello";
+    ViewData["Title"] = "Product Management";
+}
+
+<div class="container">
+    @* Tag Helper - new tag that is supported from ASP.NET 3.1 onwards*@
+    <partial name="ProductHeader.cshtml" />
+    @* <div>
+        @if(message=="Hello")
+        {
+            <span>Hello</span>
+        }
+        else
+        {
+            <span>Hello</span>
+        }
+    </div> *@
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="card shadow m-auto mt-5">
+                <div class="card-header bg-warning bg-gradient opacity-75 d-flex">
+                    <div class="flex-grow-1">
+                        <h2 class="text-dark text-center">Product Details</h2>
+                    </div>
+                    <a href="/products/addnew" class="btn btn-outline-dark">Add New</a>
+                </div>
+                <div class="card-body">
+                    <div class="mt-3 text-center">
+                        <dl>
+                            <dt>Product Name</dt>
+                            <dd>@Model.ProductName</dd>
+                            <dt>Unit Price</dt>
+                            <dd>@Model.UnitPrice</dd>
+                            <dt>Stock Available</dt>
+                            <dd>@Model.UnitsInStock</dd>
+                        </dl>
+                        <a href="/products/List" class="btn btn-lg btn-secondary">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

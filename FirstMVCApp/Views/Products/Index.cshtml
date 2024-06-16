@@ -1,0 +1,27 @@
+﻿@model FirstMVCApp.Models.Product
+
+@*
+    Commenting style in Razor
+    @model line tells that the View is of the Product Type. It requires an object of product
+    type to be passed before executing the view.
+    Throws an exception if the required object is not passed.
+    To refer to the object that is passed to this view, use the view property called Model.XXXX
+*@
+
+@{
+}
+<div class="container">
+    @*HTML helper 
+        - helps in generating the HTML content
+      Tag helpers
+        - are attributes and elements that simplify the generation of HTML
+        - to generate some content
+    *@
+    @Html.Partial("ProductHeader",viewData: ViewData)
+    <div>
+        <p>Product Id: @Model.ProductId </p>
+        <p>Product Name: @Model.ProductName </p>
+        <p>Unit Price: @Model.UnitPrice </p>
+        <p>Units in stock: @Model.UnitsInStock </p>
+    </div>
+</div>

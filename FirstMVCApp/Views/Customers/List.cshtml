@@ -1,0 +1,56 @@
+﻿@model IEnumerable<FirstMVCApp.Models.Customer>
+
+@{
+    ViewData["Title"] = "List All Customers";
+}
+
+
+<div class="container">
+    @* Tag Helper - new tag that is supported from ASP.NET 3.1 onwards*@
+    <partial name="CustomerHeader.cshtml" />
+    <div class="row">
+        <div class="col-10 offset-1">
+            <div class="card shadow m-auto mt-5">
+                <div class="card-header bg-warning bg-gradient opacity-75 d-flex">
+                    <div class="flex-grow-1">
+                        <h2 class="text-dark text-center">Customer List</h2>
+                    </div>
+                     <a href="/customers/addnew" class="btn btn-outline-dark">Add New</a> 
+                </div>
+                <div class="card-body">
+                    <table class="table table-danger table-hover table-striped">
+                        <thead><tr><th>Customer Id</th><th>Company Name</th><th>Contact Name</th><th>City</th><th>Country</th><th></th></tr></thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.CustomerId</td>
+                                    <td>@item.CompanyName</td>
+                                    <td>@item.ContactName</td>
+                                    <td>@item.City</td>
+                                    <td>@item.Country</td>
+                                    <td>
+                                        @*Route: href -> /customers/details/1*@
+                                        <a asp-controller="Customers" asp-action="Details"
+                                           asp-route-id="@item.CustomerId" class="btn btn-sm btn-outline-primary">View</a>
+
+                                        @Html.ActionLink(
+                                                 linkText: "Modify",
+                                                 actionName: "Edit",
+                                                 controllerName: "Customers",
+                                                 routeValues: new { id = item.CustomerId },
+                                                 htmlAttributes: new { @class = "btn btn-sm btn-outline-dark" }
+                                                 )
+                                        <a asp-controller="Customers" asp-action="Remove"
+                                           asp-route-id="@item.CustomerId" class="btn btn-sm btn-outline-danger">Remove</a>
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

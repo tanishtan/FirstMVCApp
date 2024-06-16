@@ -1,0 +1,43 @@
+﻿@model FirstMVCApp.Models.HomeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="alert alert-warning p-4">
+    @if (Model.IsRegistered)
+    {
+        <p>
+            Welcome <span class="fw-bold fs-6 text-danger">@Model.FirstName</span>.
+            <br />
+            We will send you features based on the country you selected
+            <span class="fw-bold fs-4">@Model.SelectedCountry</span>
+        </p>
+
+    }
+    else
+    {
+        <p>
+            Welcome, please register youself using the fields provided below.
+        </p>
+    }
+</div>
+
+@if (!Model.IsRegistered)
+{
+    <div>
+        <form asp-action="Index">
+            <div class="form-group">
+                <label asp-for="FirstName">User Name</label>
+                <input asp-for="FirstName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="SelectedCountry">Select Country</label>
+                <select asp-for="SelectedCountry" class="form-select" asp-items="@Model.Countries">
+                    <option>--Select--</option>
+                </select>
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+
+    </div>
+}
